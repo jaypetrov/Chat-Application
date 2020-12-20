@@ -1,7 +1,5 @@
 import java.util.*;
 
-//import java.util.*;
-
 public class UniqueIdGenerator {
 
 	private static List<Integer> ids = new ArrayList<Integer>();
