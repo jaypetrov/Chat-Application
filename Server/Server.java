@@ -131,7 +131,7 @@ public class Server implements Runnable {
 		} else if (string.startsWith("/inf/")) {
 			clientResponse.add(Integer.parseInt(string.split("/inf/|/end/")[1]));
 		} else {
-			System.out.println(string + "inputDataProcessor else statemenet executed Line 134 Server.java");
+			System.out.println(string + " ERROR: inputDataProcessor else statemenet executed Line 134 Server.java");
 		}
 	}
 
@@ -157,6 +157,55 @@ public class Server implements Runnable {
 		System.out.println(statusMessage);
 		statusMessage = "/mes/" + statusMessage + "\n" + "/end/";
 		allClientsSender(statusMessage);
+	}
+
+	
+	//generates unique IDs for each client
+	static class UniqueIdGenerator {
+
+		private static List<Integer> ids = new ArrayList<Integer>();
+		private static final int RANGE = 1000;
+
+		private static int index = 0;
+
+		static {
+			for (int i = 0; i < RANGE; i++) {
+				ids.add(i);
+			}
+			Collections.shuffle(ids);
+		}
+
+		private UniqueIdGenerator() {
+		}
+
+		public static int getIdentifier() {
+			if (index > ids.size() - 1)
+				index = 0;
+			return ids.get(index++);
+		}
+
+	}
+	
+	//ServerClient Class holds the information all connected clients
+	public static class ServerClient {
+
+		public String name;
+		public InetAddress address;
+		public int port;
+		public final int ID;
+		public int attempt = 0;
+
+		public ServerClient(String name, InetAddress address, int port, final int ID) {
+			this.name = name;
+			this.address = address;
+			this.port = port;
+			this.ID = ID;
+		}
+
+		public int getID() {
+			return ID;
+		}
+
 	}
 
 }// end server
