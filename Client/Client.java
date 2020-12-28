@@ -111,9 +111,4 @@ public class Client extends JFrame {
 		return ID;
 	}
 
-//	//may delete later
-//	private void userJoinInfo() {
-//		chatHistory.append(name + " has joined the chat!\n");
-//	}
-
 }

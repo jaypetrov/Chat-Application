@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.text.DefaultCaret;
 
 public class ClientWindow extends JFrame implements Runnable {
@@ -69,11 +70,12 @@ public class ClientWindow extends JFrame implements Runnable {
 		setSize(860, 620);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new LineBorder(new Color(60, 179, 113), 12)); // border
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
 
 		gridContentPane = new GridBagLayout();
-		gridContentPane.columnWidths = new int[] { 10, 735, 80, 10 };
+		gridContentPane.columnWidths = new int[] { 10, 735, 80, 5};
 		gridContentPane.rowHeights = new int[] { 50, 530, 40 };
 		gridContentPane.columnWeights = new double[] { 1.0, 1.0 };
 		gridContentPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
@@ -91,7 +93,7 @@ public class ClientWindow extends JFrame implements Runnable {
 		gridTxtrChathistory.gridy = 0;
 		gridTxtrChathistory.gridwidth = 3;
 		gridTxtrChathistory.gridheight = 2;
-		gridTxtrChathistory.insets = new Insets(10, 0, 0, 0);
+		gridTxtrChathistory.insets = new Insets(10, 5, 0, 0);
 		contentPane.add(scroll, gridTxtrChathistory);
 
 		txtMessage = new JTextField();
@@ -109,6 +111,7 @@ public class ClientWindow extends JFrame implements Runnable {
 		gridTxtMessage.gridx = 0;
 		gridTxtMessage.gridy = 2;
 		gridTxtMessage.gridwidth = 2;
+		gridTxtMessage.insets = new Insets(0, 5, 0, 0);
 		contentPane.add(txtMessage, gridTxtMessage);
 		txtMessage.setColumns(10);
 
@@ -137,9 +140,9 @@ public class ClientWindow extends JFrame implements Runnable {
 		});
 
 		txtMessage.requestFocusInWindow();
-
 		getContentPane().setBackground(new Color(0, 250, 154));
-	}
+		
+	}// end mainChatFrame
 
 	public void run() {
 		serverListener();

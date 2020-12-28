@@ -1,22 +1,19 @@
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 
 public class LogInWindow extends JFrame {
 
@@ -52,7 +49,7 @@ public class LogInWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 200, 420, 360);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new LineBorder(new Color(60, 179, 113), 12));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
@@ -60,7 +57,9 @@ public class LogInWindow extends JFrame {
 		buttonLogin = new JButton("Login");
 		buttonLogin.setVerticalAlignment(SwingConstants.BOTTOM);
 		buttonLogin.setFont(new Font("Calibri", Font.BOLD, 15));
-		buttonLogin.setForeground(new Color(0, 0, 128));
+		buttonLogin.setBackground(Color.black);
+		buttonLogin.setOpaque(true);
+		buttonLogin.setForeground(Color.black);
 		buttonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				startChat();
@@ -97,6 +96,7 @@ public class LogInWindow extends JFrame {
 		contentPane.add(textFieldIpAddress);
 
 		textFieldPort = new JTextField();
+		textFieldPort.setForeground(Color.BLACK);
 		textFieldPort.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -109,7 +109,7 @@ public class LogInWindow extends JFrame {
 		textFieldPort.setBounds(140, 175, 168, 33);
 		contentPane.add(textFieldPort);
 
-		// set backgroun color
+		// set background color
 		getContentPane().setBackground(new Color(0, 250, 154));
 
 		labelpExample = new JLabel("e.g. 192.113.84.239");
