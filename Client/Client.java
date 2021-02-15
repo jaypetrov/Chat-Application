@@ -53,7 +53,7 @@ public class Client extends JFrame {
 		this.port = port;
 	}
 
-	// handles if the client connects to the server
+ 
 	public boolean startConnection(String address) {
 		try {
 			socket = new DatagramSocket();
